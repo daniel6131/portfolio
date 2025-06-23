@@ -1,15 +1,15 @@
 import { easing } from 'maath';
-import { Astronaut } from '../components/Astronaut';
+// import { Astronaut } from '../components/Astronaut';
 import ParallaxBackground from '../components/ParallaxBackground';
 import HeroText from './../components/HeroText';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useMediaQuery } from 'react-responsive';
-import { Float } from '@react-three/drei';
+// import { useMediaQuery } from 'react-responsive';
+// import { Float } from '@react-three/drei';
 import { Suspense } from 'react';
 import Loader from '../components/Loader';
 
 const Hero = () => {
-  const isMobile = useMediaQuery({ maxWidth: 853 });
+  // const isMobile = useMediaQuery({ maxWidth: 853 });
   return (
     <section className='c-space flex min-h-screen items-start justify-center overflow-hidden md:items-start md:justify-start'>
       <HeroText />
@@ -17,9 +17,9 @@ const Hero = () => {
       <figure className='absolute inset-0' style={{ width: '100vw', height: '100vh' }}>
         <Canvas camera={{ position: [0, 1, 3] }}>
           <Suspense fallback={<Loader />}>
-            <Float>
+            {/* <Float>
               <Astronaut scale={isMobile && 0.23} position={isMobile && [0, -1.5, 0]} />
-            </Float>
+            </Float> */}
           </Suspense>
           <Rig />
         </Canvas>
