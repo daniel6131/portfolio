@@ -1,11 +1,12 @@
 import { useRef } from 'react';
 import Card from '../components/Card';
-import { Globe } from '../components/Globe';
 import CopyEmailButton from '../components/CopyEmailButton';
 import { Frameworks } from '../components/Frameworks';
+import { Globe } from '../components/Globe';
 
 const About = () => {
-  const grid2Container = useRef();
+  const grid2Container = useRef(null);
+
   return (
     <section className='c-space section-spacing'>
       <h2 className='text-heading'>About Me</h2>
@@ -24,8 +25,9 @@ const About = () => {
               dynamic and software web applications.
             </p>
           </div>
-          <div className='pointer-evets-none from-indigo absolute inset-x-0 -bottom-4 h-1/2 bg-gradient-to-t sm:h-1/3' />
+          <div className='from-indigo pointer-events-none absolute inset-x-0 -bottom-4 h-1/2 bg-gradient-to-t sm:h-1/3' />
         </div>
+
         {/* Grid 2 */}
         <div className='grid-default-color grid-2'>
           <div ref={grid2Container} className='flex h-full w-full items-center justify-center'>
@@ -72,6 +74,7 @@ const About = () => {
             />
           </div>
         </div>
+
         {/* Grid 3 */}
         <div className='grid-black-color grid-3'>
           <div className='z-10 w-[50%]'>
@@ -84,6 +87,7 @@ const About = () => {
             <Globe />
           </figure>
         </div>
+
         {/* Grid 4 */}
         <div className='grid-special-color grid-4'>
           <div className='flex size-full flex-col items-center justify-center gap-4'>
@@ -91,6 +95,7 @@ const About = () => {
             <CopyEmailButton />
           </div>
         </div>
+
         {/* Grid 5 */}
         <div className='grid-default-color grid-5'>
           <div className='z-10 w-[50%]'>
