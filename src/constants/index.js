@@ -238,3 +238,95 @@ export const mySocials = [
     icon: '/assets/socials/instagram.svg',
   },
 ];
+
+export const experiences = [
+  {
+    title: 'Software Engineer',
+    job: 'Yieldify (Epsilon Group)',
+    date: 'May 2024 - Aug 2024',
+    contents: [
+      'Led development of internal activity logging feature within complex monorepo architecture, enabling real-time tracking of platform changes using TypeScript, React, and Node.js.',
+      'Architected comprehensive logging system with Amazon Aurora RDS backend, utilizing Infrastructure as Code principles with AWS CloudFormation templates.',
+      'Built robust CI/CD pipelines using Git and AWS services, ensuring reliable automated deployments across multiple environments.',
+      'Presented bi-weekly technical updates to senior engineers and management, facilitating collaborative feedback loops that drove iterative improvements.',
+      'Delivered scalable, maintainable solution that significantly enhanced system observability and operational transparency for development teams.',
+    ],
+  },
+  {
+    title: 'Full-Stack Developer',
+    job: 'Piratech',
+    date: 'Aug 2022 - May 2024',
+    contents: [
+      'Specialized in crafting tailored solutions using TypeScript, React, Node.js, and AWS serverless architecture with DynamoDB data persistence.',
+      'Led development and launch of two significant Android applications for QMedia, managing all phases from architecture design to Google Play Store deployment.',
+      'Delivered comprehensive banking solution for Finovance, including user-friendly front-end interfaces and robust serverless backend APIs.',
+      '✅ Pioneered browser-based game and poker website using AWS serverless technologies.',
+      '✅ Spearheaded OCR recognition platform development with DynamoDB data persistence.',
+      '✅ Engaged directly with 5+ clients to translate requirements into performant, visually appealing applications.',
+      'Acted as lead developer on key projects, organizing team workloads and maintaining consistent code quality with on-time delivery.',
+    ],
+  },
+  {
+    title: 'Software Engineer (Placement)',
+    job: 'DVLA - Emerging Technology',
+    date: 'Aug 2020 - Aug 2021',
+    contents: [
+      'Focused on integration and demonstration of innovative tech solutions using JavaScript, HTML, CSS, Node.js, and AWS.',
+      'Designed and implemented internal desk booking system, significantly improving office resource management and operational efficiency.',
+      'Contributed to development and launch of AR-based application for vehicle license plate recognition, achieving 25% improvement in identification speed.',
+      'Acted as Scrum/Sprint planning leader, orchestrating bi-weekly stand-ups and facilitating discussions on adaptive strategies.',
+      'Applied agile methodologies to contribute effectively to team goals while identifying critical pain points and actionable insights.',
+    ],
+  },
+];
+
+export const reviews = [
+  {
+    name: 'Jack',
+    username: '@jack',
+    body: "I've never seen anything like this before. It's amazing. I love it.",
+    img: 'https://robohash.org/jack',
+  },
+  {
+    name: 'Jill',
+    username: '@jill',
+    body: "I don't know what to say. I'm speechless. This is amazing.",
+    img: 'https://robohash.org/jill',
+  },
+  {
+    name: 'John',
+    username: '@john',
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: 'https://robohash.org/john',
+  },
+  {
+    name: 'Alice',
+    username: '@alice',
+    body: "This is hands down the best thing I've experienced. Highly recommend!",
+    img: 'https://robohash.org/alice',
+  },
+  {
+    name: 'Bob',
+    username: '@bob',
+    body: 'Incredible work! The attention to detail is phenomenal.',
+    img: 'https://robohash.org/bob',
+  },
+  {
+    name: 'Charlie',
+    username: '@charlie',
+    body: 'This exceeded all my expectations. Absolutely stunning!',
+    img: 'https://robohash.org/charlie',
+  },
+  {
+    name: 'Dave',
+    username: '@dave',
+    body: "Simply breathtaking. The best decision I've made in a while.",
+    img: 'https://robohash.org/dave',
+  },
+  {
+    name: 'Eve',
+    username: '@eve',
+    body: 'So glad I found this. It has changed the game for me.',
+    img: 'https://robohash.org/eve',
+  },
+];
