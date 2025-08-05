@@ -1,8 +1,10 @@
 import { lazy, Suspense } from 'react';
+import CustomCursorEffect from './components/CustomCursorEffect';
 
 // Static imports for critical components
 import Navbar from './sections/Navbar';
 import Hero from './sections/Hero';
+import Testimonial from './sections/Testimonial';
 
 // Lazy imports for below-the-fold components
 const About = lazy(() => import('./sections/About'));
@@ -18,14 +20,15 @@ const SectionLoader = () => (
 
 const App = () => (
   <div className='container mx-auto max-w-7xl'>
+    <CustomCursorEffect />
     <Navbar />
     <Hero />
     <Suspense fallback={<SectionLoader />}>
       <About />
       <Projects />
       <Experiences />
+      <Testimonial />
     </Suspense>
-    {/* TODO: Add testimonial, contact, footer sections */}
   </div>
 );
 

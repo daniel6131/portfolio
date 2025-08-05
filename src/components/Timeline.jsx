@@ -1,6 +1,6 @@
 'use client';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 // Constants
 const TIMELINE_STYLES = {

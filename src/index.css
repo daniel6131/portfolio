@@ -135,3 +135,42 @@ body {
 .field-input-focus {
   @apply focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:outline-none;
 }
+
+/* Custom Cursor Styles */
+
+/* Specific cursor types for different elements */
+input,
+textarea,
+select,
+[contenteditable='true'] {
+  cursor: text !important;
+}
+
+a,
+button,
+[role='button'] {
+  cursor: pointer !important;
+}
+
+.cursor-hover {
+  position: relative;
+}
+
+/* Performance optimization for cursor animation */
+.cursor-element {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Custom cursor hover states for your existing elements */
+.nav-link,
+.btn,
+.hover-animation {
+  transition: all 0.3s ease;
+}
+
+/* Ensure cursor works well with your gradient backgrounds */
+.custom-cursor {
+  mix-blend-mode: difference;
+}
