@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 // Static imports for critical components
 import Navbar from './sections/Navbar';
 import Hero from './sections/Hero';
+import Testimonial from './sections/Testimonial';
 
 // Lazy imports for below-the-fold components
 const About = lazy(() => import('./sections/About'));
@@ -24,8 +25,8 @@ const App = () => (
       <About />
       <Projects />
       <Experiences />
+      <Testimonial />
     </Suspense>
-    {/* TODO: Add testimonial, contact, footer sections */}
   </div>
 );
 
