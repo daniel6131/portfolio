@@ -1,8 +1,7 @@
-'use client';
+import PropTypes from 'prop-types';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { memo, useLayoutEffect, useRef, useState } from 'react';
 
-// Constants
 const TIMELINE_STYLES = {
   container: 'c-space section-spacing',
   heading: 'text-heading',
@@ -26,36 +25,24 @@ const TIMELINE_STYLES = {
 };
 
 const SCROLL_CONFIG = {
-  target: null,
   offset: ['start 10%', 'end 50%'],
 };
 
-// Custom hook for timeline height measurement
 const useTimelineHeight = ref => {
   const [height, setHeight] = useState(0);
-
   useLayoutEffect(() => {
     if (!ref.current) return;
-
-    const measureHeight = () => {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    };
-
+    const measureHeight = () => setHeight(ref.current.getBoundingClientRect().height);
     measureHeight();
-
     const resizeObserver = new ResizeObserver(measureHeight);
     resizeObserver.observe(ref.current);
-
     return () => resizeObserver.disconnect();
   }, [ref]);
-
   return height;
 };
 
-// Memoized timeline item component
-const TimelineItem = ({ item, index }) => (
-  <div key={index} className={TIMELINE_STYLES.itemContainer}>
+const TimelineItem = memo(({ item }) => (
+  <div className={TIMELINE_STYLES.itemContainer} role='listitem'>
     <div className={TIMELINE_STYLES.stickyHeader}>
       <div className={TIMELINE_STYLES.dot}>
         <div className={TIMELINE_STYLES.innerDot} />
@@ -66,7 +53,6 @@ const TimelineItem = ({ item, index }) => (
         <h3 className={TIMELINE_STYLES.jobTitle}>{item.job}</h3>
       </div>
     </div>
-
     <div className={TIMELINE_STYLES.contentWrapper}>
       <div className={TIMELINE_STYLES.mobileInfo}>
         <h3>{item.date}</h3>
@@ -79,40 +65,52 @@ const TimelineItem = ({ item, index }) => (
       ))}
     </div>
   </div>
-);
+));
+TimelineItem.displayName = 'TimelineItem';
 
-// Main Timeline component
-export const Timeline = ({ data }) => {
+export const Timeline = memo(({ data }) => {
   const timelineRef = useRef(null);
   const containerRef = useRef(null);
-
   const height = useTimelineHeight(timelineRef);
-
   const { scrollYProgress } = useScroll({
     ...SCROLL_CONFIG,
     target: containerRef,
   });
-
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
     <div className={TIMELINE_STYLES.container} ref={containerRef}>
       <h2 className={TIMELINE_STYLES.heading}>My Work Experience</h2>
-      <div ref={timelineRef} className={TIMELINE_STYLES.timelineWrapper}>
-        {data.map((item, index) => (
-          <TimelineItem key={item.id || index} item={item} index={index} />
+      <div ref={timelineRef} className={TIMELINE_STYLES.timelineWrapper} role='list'>
+        {data.map(item => (
+          <TimelineItem key={item.id} item={item} />
         ))}
         <div style={{ height: `${height}px` }} className={TIMELINE_STYLES.progressLine}>
           <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
+            style={{ height: heightTransform, opacity: opacityTransform }}
             className={TIMELINE_STYLES.animatedLine}
           />
         </div>
       </div>
     </div>
   );
+});
+Timeline.displayName = 'Timeline';
+
+// --- PropType Definitions ---
+const itemPropTypes = PropTypes.shape({
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  date: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  job: PropTypes.string.isRequired,
+  contents: PropTypes.arrayOf(PropTypes.string).isRequired,
+});
+
+TimelineItem.propTypes = {
+  item: itemPropTypes.isRequired,
+};
+
+Timeline.propTypes = {
+  data: PropTypes.arrayOf(itemPropTypes).isRequired,
 };
