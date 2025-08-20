@@ -1,68 +1,66 @@
+import { memo } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'motion/react';
 
-const ParallaxBackground = () => {
+const ParallaxLayer = memo(({ image, zIndex, transform }) => (
+  <motion.div
+    className={`absolute inset-0 ${zIndex}`}
+    style={{
+      backgroundImage: `url(${image})`,
+      backgroundPosition: 'bottom',
+      backgroundSize: 'cover',
+      ...transform,
+    }}
+  />
+));
+ParallaxLayer.displayName = 'ParallaxLayer';
+
+const ParallaxBackground = memo(() => {
   const { scrollYProgress } = useScroll();
-  const x = useSpring(scrollYProgress, { damping: 50 });
-  const mountain3Y = useTransform(x, [0, 0.5], ['0%', '70%']);
-  const planetsX = useTransform(x, [0, 0.5], ['0%', '-200%']);
-  const mountain2Y = useTransform(x, [0, 0.5], ['0%', '30%']);
-  const mountain1Y = useTransform(x, [0, 0.5], ['0%', '0%']);
+  const smoothScroll = useSpring(scrollYProgress, { damping: 50 });
+
+  const layers = [
+    {
+      id: 1,
+      image: '/assets/sky.jpg',
+      zIndex: '-z-50',
+      transform: {},
+    },
+    {
+      id: 2,
+      image: '/assets/mountain-3.png',
+      zIndex: '-z-40',
+      transform: { y: useTransform(smoothScroll, [0, 0.5], ['0%', '70%']) },
+    },
+    {
+      id: 3,
+      image: '/assets/planets.png',
+      zIndex: '-z-30',
+      transform: { x: useTransform(smoothScroll, [0, 0.5], ['0%', '-200%']) },
+    },
+    {
+      id: 4,
+      image: '/assets/mountain-2.png',
+      zIndex: '-z-20',
+      transform: { y: useTransform(smoothScroll, [0, 0.5], ['0%', '30%']) },
+    },
+    {
+      id: 5,
+      image: '/assets/mountain-1.png',
+      zIndex: '-z-10',
+      transform: { y: useTransform(smoothScroll, [0, 0.5], ['0%', '0%']) },
+    },
+  ];
 
   return (
     <section className='absolute inset-0 bg-black/40'>
       <div className='relative h-screen overflow-y-hidden'>
-        {/* Background Sky */}
-        <div
-          className='w-ull absolute inset-0 -z-50 h-screen'
-          style={{
-            backgroundImage: 'url(/assets/sky.jpg)',
-            backgroundPosition: 'bottom',
-            backgroundSize: 'cover',
-          }}
-        />
-        {/* Mountain Layer 3 */}
-        <motion.div
-          className='absolute inset-0 -z-40'
-          style={{
-            backgroundImage: 'url(/assets/mountain-3.png)',
-            backgroundPosition: 'bottom',
-            backgroundSize: 'cover',
-            y: mountain3Y,
-          }}
-        />
-        {/* Planets */}
-        <motion.div
-          className='absolute inset-0 -z-30'
-          style={{
-            backgroundImage: 'url(/assets/planets.png)',
-            backgroundPosition: 'bottom',
-            backgroundSize: 'cover',
-            x: planetsX,
-          }}
-        />
-        {/* Mountain Layer 2 */}
-        <motion.div
-          className='absolute inset-0 -z-20'
-          style={{
-            backgroundImage: 'url(/assets/mountain-2.png)',
-            backgroundPosition: 'bottom',
-            backgroundSize: 'cover',
-            y: mountain2Y,
-          }}
-        />
-        {/* Mountain Layer 1 */}
-        <motion.div
-          className='absolute inset-0 -z-10'
-          style={{
-            backgroundImage: 'url(/assets/mountain-1.png)',
-            backgroundPosition: 'bottom',
-            backgroundSize: 'cover',
-            y: mountain1Y,
-          }}
-        />
+        {layers.map(layer => (
+          <ParallaxLayer key={layer.id} {...layer} />
+        ))}
       </div>
     </section>
   );
-};
+});
+ParallaxBackground.displayName = 'ParallaxBackground';
 
 export default ParallaxBackground;
