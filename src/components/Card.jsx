@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { motion } from 'motion/react';
 
 const MOTION_CONFIG = {
@@ -12,7 +13,7 @@ const CARD_STYLES = {
   image: 'w-15',
 };
 
-const Card = ({ style, text, image, containerRef }) => {
+const Card = memo(({ style, text, image, containerRef }) => {
   const baseClassName = `${CARD_STYLES.common} ${image ? CARD_STYLES.image : CARD_STYLES.text}`;
 
   const motionProps = {
@@ -23,10 +24,12 @@ const Card = ({ style, text, image, containerRef }) => {
   };
 
   return image && !text ? (
-    <motion.img {...motionProps} src={image} alt='card' />
+    <motion.img {...motionProps} src={image} alt='Draggable tech icon' />
   ) : (
     <motion.div {...motionProps}>{text}</motion.div>
   );
-};
+});
+
+Card.displayName = 'Card';
 
 export default Card;
