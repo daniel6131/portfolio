@@ -46,11 +46,15 @@
     }
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #030412;
   font-family: 'Funnel Display', sans-serif;
   color: white;
-  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
@@ -64,6 +68,7 @@ body {
 
 .section-spacing {
   @apply mt-20 min-h-screen md:mt-30;
+  scroll-margin-top: 5rem;
 }
 
 .text-heading {

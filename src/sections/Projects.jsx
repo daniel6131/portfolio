@@ -33,6 +33,7 @@ const Projects = () => {
 
   return (
     <section
+      id='work'
       onMouseMove={handleMouseMove}
       className='c-space section-spacing relative'
       aria-label='Projects section'

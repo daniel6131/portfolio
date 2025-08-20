@@ -56,7 +56,7 @@ const Contact = () => {
   );
 
   return (
-    <section className='c-space section-spacing relative flex items-center'>
+    <section id='contact' className='c-space section-spacing relative flex items-center'>
       <Particles
         className='absolute inset-0 -z-50'
         quantity={100}
