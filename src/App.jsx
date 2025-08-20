@@ -4,6 +4,7 @@ import { lazy, Suspense } from 'react';
 import Navbar from './sections/Navbar';
 import Hero from './sections/Hero';
 import Testimonial from './sections/Testimonial';
+import Contact from './sections/Contact';
 
 // Lazy imports for below-the-fold components
 const About = lazy(() => import('./sections/About'));
@@ -26,6 +27,7 @@ const App = () => (
       <Projects />
       <Experiences />
       <Testimonial />
+      <Contact />
     </Suspense>
   </div>
 );
