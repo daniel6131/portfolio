@@ -31,6 +31,7 @@ const CopyEmailButton = () => {
       await navigator.clipboard.writeText(EMAIL);
       setCopied(true);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Failed to copy email:', error);
     }
   }, []);
