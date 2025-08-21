@@ -46,6 +46,7 @@ const Contact = () => {
         setFormData(INITIAL_FORM_STATE);
         showAlert({ text: 'Your message has been sent!', type: 'success' });
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('EmailJS Error:', error);
         showAlert({ text: 'Something went wrong. Please try again.', type: 'danger' });
       } finally {
