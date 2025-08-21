@@ -241,6 +241,7 @@ export const mySocials = [
 
 export const experiences = [
   {
+    id: 1,
     title: 'Software Engineer',
     job: 'Yieldify (Epsilon Group)',
     date: 'May 2024 - Aug 2024',
@@ -253,6 +254,7 @@ export const experiences = [
     ],
   },
   {
+    id: 2,
     title: 'Full-Stack Developer',
     job: 'Piratech',
     date: 'Aug 2022 - May 2024',
@@ -267,6 +269,7 @@ export const experiences = [
     ],
   },
   {
+    id: 3,
     title: 'Software Engineer (Placement)',
     job: 'DVLA - Emerging Technology',
     date: 'Aug 2020 - Aug 2021',

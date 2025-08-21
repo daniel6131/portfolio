@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 
-const EMAIL = 'daniel6131@hotmail.com';
-const COPY_TIMEOUT = 2000;
+const EMAIL = 'obiware.dev@gmail.com';
+const COPY_TIMEOUT_MS = 2000;
 
 const ANIMATION_CONFIG = {
   duration: 0.1,
@@ -16,11 +16,20 @@ const TEXT_STYLES = 'flex items-center justify-center gap-2';
 const CopyEmailButton = () => {
   const [copied, setCopied] = useState(false);
 
+  useEffect(() => {
+    if (!copied) return;
+
+    const timerId = setTimeout(() => {
+      setCopied(false);
+    }, COPY_TIMEOUT_MS);
+
+    return () => clearTimeout(timerId);
+  }, [copied]);
+
   const copyToClipboard = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(EMAIL);
       setCopied(true);
-      setTimeout(() => setCopied(false), COPY_TIMEOUT);
     } catch (error) {
       console.error('Failed to copy email:', error);
     }
@@ -44,7 +53,7 @@ const CopyEmailButton = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={ANIMATION_CONFIG}
           >
-            <img src='assets/copy-done.svg' className='w-5' alt='success' />
+            <img src='assets/copy-done.svg' className='w-5' alt='Success checkmark' />
             Email has Copied
           </motion.p>
         ) : (
@@ -56,7 +65,7 @@ const CopyEmailButton = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: ANIMATION_CONFIG.duration }}
           >
-            <img src='assets/copy.svg' alt='copy' className='w-5' />
+            <img src='assets/copy.svg' alt='Copy icon' className='w-5' />
             Copy Email Address
           </motion.p>
         )}
