@@ -67,71 +67,73 @@ const Contact = () => {
 
       {alert.show && <Alert type={alert.type} text={alert.text} />}
 
-      <div className='bg-primary mx-auto flex max-w-md flex-col items-center justify-center rounded-2xl border border-white/10 p-5'>
-        <div className='mb-10 flex w-full flex-col items-start gap-5'>
-          <h2 className='text-heading'>Let's Talk</h2>
-          <p className='font-normal text-neutral-400'>
-            Whether you're looking to build a new website, improve your existing platform, or bring
-            a unique project to life, I'm here to help
-          </p>
-        </div>
+      <div className='container mx-auto max-w-7xl'>
+        <div className='bg-primary mx-auto flex max-w-md flex-col items-center justify-center rounded-2xl border border-white/10 p-5'>
+          <div className='mb-10 flex w-full flex-col items-start gap-5'>
+            <h2 className='text-heading'>Let's Talk</h2>
+            <p className='font-normal text-neutral-400'>
+              Whether you're looking to build a new website, improve your existing platform, or
+              bring a unique project to life, I'm here to help
+            </p>
+          </div>
 
-        <form className='w-full' onSubmit={handleSubmit}>
-          <div className='mb-5'>
-            <label htmlFor='name' className='feild-label'>
-              Full Name
-            </label>
-            <input
-              id='name'
-              name='name'
-              type='text'
-              className='field-input field-input-focus'
-              placeholder='John Doe'
-              autoComplete='name'
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className='mb-5'>
-            <label htmlFor='email' className='feild-label'>
-              Email
-            </label>
-            <input
-              id='email'
-              name='email'
-              type='email'
-              className='field-input field-input-focus'
-              placeholder='JohnDoe@email.com'
-              autoComplete='email'
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className='mb-5'>
-            <label htmlFor='message' className='feild-label'>
-              Message
-            </label>
-            <textarea
-              id='message'
-              name='message'
-              rows='4'
-              className='field-input field-input-focus'
-              placeholder='Share your thoughts...'
-              value={formData.message}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button
-            type='submit'
-            disabled={isLoading}
-            className='from-lavender to-royal hover-animation w-full cursor-pointer rounded-md bg-radial px-1 py-3 text-center text-lg disabled:cursor-not-allowed disabled:opacity-70'
-          >
-            {isLoading ? 'Sending...' : 'Send'}
-          </button>
-        </form>
+          <form className='w-full' onSubmit={handleSubmit}>
+            <div className='mb-5'>
+              <label htmlFor='name' className='feild-label'>
+                Full Name
+              </label>
+              <input
+                id='name'
+                name='name'
+                type='text'
+                className='field-input field-input-focus'
+                placeholder='John Doe'
+                autoComplete='name'
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className='mb-5'>
+              <label htmlFor='email' className='feild-label'>
+                Email
+              </label>
+              <input
+                id='email'
+                name='email'
+                type='email'
+                className='field-input field-input-focus'
+                placeholder='JohnDoe@email.com'
+                autoComplete='email'
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className='mb-5'>
+              <label htmlFor='message' className='feild-label'>
+                Message
+              </label>
+              <textarea
+                id='message'
+                name='message'
+                rows='4'
+                className='field-input field-input-focus'
+                placeholder='Share your thoughts...'
+                value={formData.message}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button
+              type='submit'
+              disabled={isLoading}
+              className='from-lavender to-royal hover-animation w-full cursor-pointer rounded-md bg-radial px-1 py-3 text-center text-lg disabled:cursor-not-allowed disabled:opacity-70'
+            >
+              {isLoading ? 'Sending...' : 'Send'}
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   );

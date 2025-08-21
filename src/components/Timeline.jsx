@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { memo, useLayoutEffect, useRef, useState } from 'react';
 
 const TIMELINE_STYLES = {
-  container: 'c-space section-spacing',
+  container: 'c-space section-spacing relative',
   heading: 'text-heading',
   timelineWrapper: 'relative pb-20',
-  itemContainer: 'flex justify-start pt-10 md:gap-10 md:pt-40',
+  itemContainer: 'flex justify-start pt-10 md:gap-10 md:pt-40 md:first:pt-12',
   stickyHeader:
     'sticky top-40 z-40 flex max-w-xs flex-col items-center self-start md:w-full md:flex-row lg:max-w-sm',
   dot: 'bg-midnight absolute -left-[15px] flex h-10 w-10 items-center justify-center rounded-full',

@@ -97,7 +97,7 @@ const TechStackGrid = () => (
 
 const About = () => {
   return (
-    <section id='about' className='c-space section-spacing'>
+    <section id='about' className='c-space section-spacing container mx-auto max-w-7xl'>
       <h2 className='text-heading'>About Me</h2>
       <div className='mt-12 grid grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-6'>
         <AboutIntro />

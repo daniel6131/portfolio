@@ -35,7 +35,7 @@ const Projects = () => {
     <section
       id='work'
       onMouseMove={handleMouseMove}
-      className='c-space section-spacing relative'
+      className='c-space section-spacing relative container mx-auto max-w-7xl'
       aria-label='Projects section'
     >
       <h2 className='text-heading'>My Selected Projects</h2>

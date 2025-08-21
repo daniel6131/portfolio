@@ -7,9 +7,11 @@ const Hero = memo(() => {
   return (
     <section
       id='home'
-      className='c-space flex min-h-screen items-start justify-center overflow-hidden md:items-start md:justify-start'
+      className='relative flex min-h-screen items-start justify-center overflow-hidden md:items-start md:justify-start'
     >
-      <HeroText />
+      <div className='relative z-10 container mx-auto max-w-7xl'>
+        <HeroText />
+      </div>
       <ParallaxBackground />
     </section>
   );

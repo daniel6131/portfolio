@@ -25,7 +25,7 @@ const LazySection = ({ component: Component }) => (
 );
 
 const App = () => (
-  <div className='container mx-auto max-w-7xl'>
+  <div className='relative'>
     <Navbar />
     <Hero />
 

@@ -40,7 +40,9 @@ export default function Testimonial() {
 
   return (
     <div className='c-space mt-25 items-start md:mt-35'>
-      <h2 className='text-heading'>Hear From My Clients</h2>
+      <div className='container mx-auto max-w-7xl'>
+        <h2 className='text-heading'>Hear From My Clients</h2>
+      </div>
       <div className='relative mt-12 flex w-full flex-col items-center justify-center overflow-hidden'>
         <MarqueeRow reviews={firstRow} />
         <MarqueeRow reviews={secondRow} reverse />
