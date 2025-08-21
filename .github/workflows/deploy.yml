@@ -1,20 +1,16 @@
-# .github/workflows/deploy.yml
+name: Build and Deploy Portfolio
 
-name: Build and Deploy to GitHub Pages
-
-# This workflow runs automatically whenever we push to the 'main' branch
 on:
   push:
     branches: ['main']
 
-# Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
   pages: write
   id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -37,8 +33,16 @@ jobs:
 
       - name: Build project
         run: npm run build
-        # Vite will automatically use the .env file to inject our variables into the build output
 
+      - name: Upload artifact for deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
-        # This action takes the 'dist' folder created by 'npm run build' and deploys it.
