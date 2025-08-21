@@ -21,31 +21,31 @@ const ParallaxBackground = memo(() => {
   const layers = [
     {
       id: 1,
-      image: '/assets/sky.jpg',
+      image: 'assets/sky.jpg',
       zIndex: '-z-50',
       transform: {},
     },
     {
       id: 2,
-      image: '/assets/mountain-3.png',
+      image: 'assets/mountain-3.png',
       zIndex: '-z-40',
       transform: { y: useTransform(smoothScroll, [0, 0.5], ['0%', '70%']) },
     },
     {
       id: 3,
-      image: '/assets/planets.png',
+      image: 'assets/planets.png',
       zIndex: '-z-30',
       transform: { x: useTransform(smoothScroll, [0, 0.5], ['0%', '-200%']) },
     },
     {
       id: 4,
-      image: '/assets/mountain-2.png',
+      image: 'assets/mountain-2.png',
       zIndex: '-z-20',
       transform: { y: useTransform(smoothScroll, [0, 0.5], ['0%', '30%']) },
     },
     {
       id: 5,
-      image: '/assets/mountain-1.png',
+      image: 'assets/mountain-1.png',
       zIndex: '-z-10',
       transform: { y: useTransform(smoothScroll, [0, 0.5], ['0%', '0%']) },
     },
