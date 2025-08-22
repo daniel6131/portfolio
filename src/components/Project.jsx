@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { AnimatePresence } from 'motion/react';
 import ProjectDetails from './ProjectDetails';
 
 const SEPARATOR_STYLES =
@@ -8,20 +9,15 @@ const Project = ({ title, description, subDescription, href, image, tags, setPre
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleMouseEnter = useCallback(() => {
-    setPreview(image);
+    if (setPreview) setPreview(image);
   }, [image, setPreview]);
 
   const handleMouseLeave = useCallback(() => {
-    setPreview(null);
+    if (setPreview) setPreview(null);
   }, [setPreview]);
 
-  const openModal = useCallback(() => {
-    setIsModalOpen(true);
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setIsModalOpen(false);
-  }, []);
+  const openModal = useCallback(() => setIsModalOpen(true), []);
+  const closeModal = useCallback(() => setIsModalOpen(false), []);
 
   return (
     <>
@@ -49,17 +45,20 @@ const Project = ({ title, description, subDescription, href, image, tags, setPre
         </button>
       </div>
       <div className={SEPARATOR_STYLES} />
-      {isModalOpen && (
-        <ProjectDetails
-          title={title}
-          description={description}
-          subDescription={subDescription}
-          image={image}
-          tags={tags}
-          href={href}
-          closeModal={closeModal}
-        />
-      )}
+
+      <AnimatePresence>
+        {isModalOpen && (
+          <ProjectDetails
+            title={title}
+            description={description}
+            subDescription={subDescription}
+            image={image}
+            tags={tags}
+            href={href}
+            closeModal={closeModal}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 };

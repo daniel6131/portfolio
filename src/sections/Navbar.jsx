@@ -8,11 +8,11 @@ const NAV_LINKS = [
   { href: '#contact', label: 'Contact' },
 ];
 
-const Navigation = memo(({ links }) => (
+const Navigation = memo(({ links, onLinkClick }) => (
   <ul className='nav-ul'>
     {links.map(link => (
       <li key={link.href} className='nav-li'>
-        <a className='nav-link' href={link.href}>
+        <a className='nav-link' href={link.href} onClick={onLinkClick}>
           {link.label}
         </a>
       </li>
@@ -23,21 +23,21 @@ Navigation.displayName = 'Navigation';
 
 const Navbar = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(prev => !prev);
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <>
-      <header className='bg-primary/40 fixed inset-x-0 z-50 w-full backdrop-blur-lg'>
+    <div className='relative z-50'>
+      <header className='bg-primary/40 fixed inset-x-0 z-10 w-full backdrop-blur-lg'>
         <div className='c-space mx-auto max-w-7xl'>
           <div className='flex items-center justify-between py-2 sm:py-0'>
             <a
-              href='/'
+              href='#home'
               className='text-xl font-bold text-neutral-400 transition-colors hover:text-white'
             >
               Dan
             </a>
             <button
-              onClick={toggleMenu}
+              onClick={() => setIsOpen(prev => !prev)}
               className='flex cursor-pointer text-neutral-400 hover:text-white focus:outline-none sm:hidden'
               aria-controls='mobile-menu'
               aria-expanded={isOpen}
@@ -60,21 +60,22 @@ const Navbar = memo(() => {
         {isOpen && (
           <motion.div
             id='mobile-menu'
-            className='bg-primary/40 fixed inset-0 z-40 flex h-screen flex-col items-center pt-24 backdrop-blur-lg sm:hidden'
+            className='bg-primary/40 fixed inset-0 flex h-screen flex-col items-center pt-24 backdrop-blur-lg sm:hidden'
             initial={{ opacity: 0, y: '-100%' }}
             animate={{ opacity: 1, y: '0%' }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             <nav className='text-center'>
-              <Navigation links={NAV_LINKS} />
+              <Navigation links={NAV_LINKS} onLinkClick={closeMenu} />
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 });
+
 Navbar.displayName = 'Navbar';
 
 export default Navbar;

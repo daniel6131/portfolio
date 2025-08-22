@@ -63,7 +63,7 @@ body {
 }
 
 .hover-animation {
-  @apply duration-200 hover:-translate-y-1;
+  @apply duration-200 hover:-translate-y-1 active:-translate-y-1;
 }
 
 .section-spacing {

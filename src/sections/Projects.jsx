@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import Project from '../components/Project';
 import { myProjects } from '../constants';
+import { useHoverDevice } from '../hooks/useHoverDevice';
 
 const SPRING_CONFIG = {
   damping: 10,
@@ -17,6 +18,7 @@ const SEPARATOR_STYLES =
 
 const Projects = () => {
   const [preview, setPreview] = useState(null);
+  const isHoverDevice = useHoverDevice();
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -45,7 +47,7 @@ const Projects = () => {
         <Project key={project.id} {...project} setPreview={setPreview} />
       ))}
 
-      {preview && (
+      {preview && isHoverDevice && (
         <motion.img
           className={PREVIEW_STYLES}
           src={preview}

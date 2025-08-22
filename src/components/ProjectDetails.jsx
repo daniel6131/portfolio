@@ -12,10 +12,10 @@ const MODAL_STYLES = {
   overlay:
     'fixed inset-0 z-50 flex h-full w-full items-center justify-center overflow-hidden backdrop-blur-sm',
   container:
-    'from-midnight to-navy relative max-w-2xl rounded-2xl border border-white/10 bg-gradient-to-l shadow-sm',
-  closeButton: 'bg-midnight absolute top-5 right-5 rounded-sm p-2 hover:bg-gray-500',
+    'from-midnight to-navy relative flex max-w-2xl flex-col rounded-2xl border border-white/10 bg-gradient-to-l shadow-sm max-h-[90vh]',
+  closeButton: 'bg-midnight absolute top-5 right-5 z-10 rounded-sm p-2 hover:bg-gray-500',
   image: 'w-full rounded-t-2xl',
-  content: 'p-5',
+  content: 'overflow-y-auto p-5',
   title: 'mb-2 text-2xl font-bold text-white',
   description: 'mb-3 font-normal text-neutral-400',
   footer: 'mt-4 flex items-center justify-between',
