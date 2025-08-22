@@ -8,7 +8,7 @@ const GRADIENT_CLASSES = 'from-primary pointer-events-none absolute inset-y-0 w-
 const ReviewCard = ({ img, name, username, body }) => (
   <figure
     className={twMerge(
-      'bg-indigo to-storm hover:bg-royal hover-animation relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border border-gray-50/[.1] p-4'
+      'bg-indigo to-storm hover:bg-royal active:bg-royal hover-animation relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border border-gray-50/[.1] p-4'
     )}
   >
     <div className='flex flex-row items-center gap-2'>

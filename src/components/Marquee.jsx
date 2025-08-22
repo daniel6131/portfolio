@@ -12,7 +12,9 @@ const BASE_CLASSES =
 
 const getAnimationClasses = (vertical, pauseOnHover, reverse) => {
   const baseAnimation = vertical ? 'animate-marquee-vertical flex-col' : 'animate-marquee flex-row';
-  const pauseClass = pauseOnHover ? 'group-hover:[animation-play-state:paused]' : '';
+  const pauseClass = pauseOnHover
+    ? 'group-hover:[animation-play-state:paused] group-active:[animation-play-state:paused]'
+    : '';
   const reverseClass = reverse ? '[animation-direction:reverse]' : '';
 
   return twMerge(
